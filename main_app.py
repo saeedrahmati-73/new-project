@@ -11,7 +11,6 @@ warnings.filterwarnings('ignore')
 try:
     from data_collector import collect_stock_data
     from price_predictor import PricePredictor
-    from data_processor import TSEDataProcessor
 except ImportError as e:
     print(f"Import error: {e}")
     print("Make sure all required files are in the same directory")
@@ -240,6 +239,7 @@ class StockPredictorGUI:
         self.update_status("🔄 در حال دریافت داده‌های سهام...")
 
         try:
+            from data_processor import TSEDataProcessor
             # 1. جمع‌آوری داده‌ها
             raw_data = collect_stock_data(symbol, days=100) # Get more data for processing
             if raw_data is None or raw_data.empty:
